@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+    <div>
+      <input type="text" name="nom" placeholder="votre nom complet" ngModel required>
+      <div *ngIf="myform.submitted && myform.controls['nom'].invalid">Nom complet est requis</div>
+    </div>
+    
+    <div>
+      <input type="text" name="prenom" placeholder="votre prenom complet" ngModel required>
+      <div *ngIf="myform.submitted && myform.controls['prenom'].invalid">Prenom complet est requis</div>
+    </div>
+    
+    <div>
+      <input type="email" name="email" placeholder="votre email" ngModel required>
+      <div *ngIf="myform.submitted && myform.controls['email'].invalid">Email est requis</div>
+    </div>
+    
+    <div>
+      <input type="password" name="password" placeholder="votre mot de passe complet" ngModel required>
+      <div *ngIf="myform.submitted && myform.controls['password'].invalid">Mot de passe est requis</div>
+    </div>
+    
+    <div>
+      <input type="password" name="passwordconfirm" placeholder="confirmer votre mot de passe" ngModel required>
+      <div *ngIf="myform.submitted && myform.controls['passwordconfirm'].invalid">Confirmation du mot de passe est requise</div>
+      <div *ngIf="myform.submitted && !passwordsMatch(myform)">Les mots de passe ne correspondent pas</div>
+    </div>
+  
+    <div>
+      <input type="submit" value="Envoyer">
+    </div>
+  </form>
